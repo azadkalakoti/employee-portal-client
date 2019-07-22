@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "empList": [
     {
@@ -30,3 +31,37 @@
     }
   ]
 }
+=======
+{
+  "empList": [
+    {
+      "empId": 612721871,
+      "name": "Cristiano Ronaldo",
+      "salary": 9981273181231,
+      "hireDate": "26-Dec-2000",
+      "email": "cr7.85@gmail.com"
+    },
+    {
+      "empId": 78128731,
+      "name": "Eden Hazard",
+      "salary": 16317212398,
+      "hireDate": "26-Dec-2000",
+      "email": "eh10foreverblue.91@gmail.com"
+    },
+    {
+      "empId": 6712731,
+      "name": "Lionel Messi",
+      "salary": 9981273181231,
+      "hireDate": "01-Jan-1882",
+      "email": "leo_goat.87@hotmail.com"
+    },
+    {
+      "empId": 74899849,
+      "name": "Sunil Chettri",
+      "salary": 781237182,
+      "hireDate": "31-Dec-2018",
+      "email": "sunil.chettri10@yahoo.com"
+    }
+  ]
+}
+>>>>>>> c364bdd25964a4e82b894cea6619730a7a328506
