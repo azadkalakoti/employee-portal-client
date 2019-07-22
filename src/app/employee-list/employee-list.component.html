@@ -7,12 +7,16 @@
       <thead>
       <tr>
         <th>Employee ID</th>
-        <th> <a href="http://localhost:8080/api/sorted-employee-list?type=NAME">
+        <th> <a style="color: purple" (click)="getSortedEmployeesList('NAME')">
           Name
         </a></th>
         <th>Email</th>
-        <th>Date of Joining</th>
-        <th>Salary</th>
+        <th> <a style="color: purple" (click)="getSortedEmployeesList('HIRE_DATE')">
+          Joining Date
+        </a></th>
+        <th> <a style="color: purple" (click)="getSortedEmployeesList('SALARY')">
+          Salary
+        </a></th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -23,7 +27,7 @@
         <td>{{employee.email}}</td>
         <td>{{employee.hireDate}}</td>
         <td>{{employee.salary}}</td>
-        <td><button (click)="getEmployeeDetails(empId)">Employee Details</button></td>
+        <td><button (click)="getEmployeeDetails(employee.empId)">Employee Details</button></td>
       </tr>
       </tbody>
     </table>

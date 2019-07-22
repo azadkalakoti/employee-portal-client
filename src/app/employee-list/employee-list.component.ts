@@ -2,6 +2,7 @@ import { Observable } from "rxjs";
 import { EmployeeService } from "./../employee.service";
 import { Employee } from "./../employee";
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeeListComponent implements OnInit {
 
   employees: Observable<Employee[]>;
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService,
+              private router: Router) { }
 
   ngOnInit() {
     this.reloadData();
@@ -21,24 +23,23 @@ export class EmployeeListComponent implements OnInit {
     this.employees = this.employeeService.getEmployeesList();
   }
 
-  getSortedEmplyeeList(sortingCriteria: string) {
+  getSortedEmployeesList(sortingCriteria: string) {
     this.employeeService.getSortedEmployeesList(sortingCriteria)
       .subscribe(
         data => {
+          this.employees = data.empList;
         },
         error => console.log(error));
   }
+
   getEmployeeDetails(id: number) {
     this.employeeService.getEmployeeDetails(id)
       .subscribe(
         data => {
+          this.router.navigate(['/employeeDetail', id]);
         },
         error => console.log(error));
 
-    this.employeeService.getEmployeeDetails(id).subscribe(
-      (data: any) => {
-        },
-        error => console.log(error));
   }
 
 }

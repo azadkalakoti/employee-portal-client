@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { Employee } from './../employee';
 import { EmployeeService } from '../employee.service';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee-details',
@@ -11,13 +12,23 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 
 export class EmployeeDetailsComponent implements OnInit {
 
-  @Input() employee: Employee;
+  public employee: any;
   constructor(private employeeService: EmployeeService,
-              private listComponent: EmployeeListComponent) {
+              private listComponent: EmployeeListComponent,
+            private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    let sub = this.route.params.subscribe(params => {
+      this.employeeService.getEmployeeDetails(params['id'])
+        .subscribe(
+          data => {
+           this.employee = data;
+          },
+          error => console.log(error));
+    });
+
   }
 
 }
