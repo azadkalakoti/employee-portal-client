@@ -16,22 +16,39 @@ export class EmployeeListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.reloadData();
+    this.reloadData(false);
   }
 
-  reloadData() {
-    this.employees = this.employeeService.getEmployeesList();
+  /**
+   * Reloads data
+   * @param isSorted
+   */
+  reloadData(isSorted) {
+    if (!isSorted) {
+      this.employees = this.employeeService.getEmployeesList();
+    }
   }
 
+  /**
+   * Calls getSortedEmployeesList service and retrieves a sorted
+   * list of employees
+   * @param sortingCriteria - sorting key
+   */
   getSortedEmployeesList(sortingCriteria: string) {
     this.employeeService.getSortedEmployeesList(sortingCriteria)
       .subscribe(
         data => {
           this.employees = data.empList;
+          //this.$route.reload();
         },
         error => console.log(error));
   }
 
+  /**
+   * Calls getEmployeeDetails service and retrieves
+   * Employee's details
+   * @param id - Employee ID
+   */
   getEmployeeDetails(id: number) {
     this.employeeService.getEmployeeDetails(id)
       .subscribe(
